@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.andyd.activitymonitor" >
+
+    <compatible-screens>
+        <!-- all small size screens -->
+        <screen android:screenSize="small" android:screenDensity="ldpi" />
+        <screen android:screenSize="small" android:screenDensity="mdpi" />
+        <screen android:screenSize="small" android:screenDensity="hdpi" />
+        <screen android:screenSize="small" android:screenDensity="xhdpi" />
+        <!-- all normal size screens -->
+        <screen android:screenSize="normal" android:screenDensity="ldpi" />
+        <screen android:screenSize="normal" android:screenDensity="mdpi" />
+        <screen android:screenSize="normal" android:screenDensity="hdpi" />
+        <screen android:screenSize="normal" android:screenDensity="xhdpi" />
+        <!-- Samsung Galaxy S4 support -->
+        <screen android:screenSize="normal" android:screenDensity="480" />
+
+    </compatible-screens>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <!-- Activities -->
+        <activity
+            android:name=".ActivityMonitorListActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ActivityMonitorPreferenceActivity" />
+        <activity android:name=".InstalledAppsList">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                       android:resource="@xml/installed_app_list_searchable" />
+        </activity>
+        <activity android:name=".SessionSummaryActivity"
+            android:parentActivityName=".ActivityMonitorListActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ActivityMonitorListActivity" />
+        </activity>
+
+        <!-- Content Providers -->
+        <provider
+            android:authorities="com.andyd.ActivityMonitor.provider.ActivityProvider"
+            android:name=".ActivityProvider" />
+
+        <!-- Services -->
+        <service android:name=".AppMonitorService" />
+
+        <!-- Receiver -->
+        <receiver android:name=".OnWakeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+</manifest>

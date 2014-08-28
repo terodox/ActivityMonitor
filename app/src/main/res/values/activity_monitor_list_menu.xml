@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_activity_to_monitor">Monitor New Activity</string>
+
+    <!-- Preference strings -->
+    <string name="activity_monitor_list_activity_preferenceTitle">Monitoring Preferences</string>
+    <string name="activity_monitor_list_activity_preferenceSummary">Yay options!</string>
+    <string name="activity_monitor_list_activity_preference_session_pause_length_title">Pause Time</string>
+    <string name="activity_monitor_list_activity_preference_session_pause_length_summary">How long between uses is still a single session?</string>
+    <string name="activity_monitor_list_activity_preference_session_pause_length_dialogTitle">Session Time</string>
+    <string name="activity_monitor_list_activity_preference_session_pause_length_defaultValue">2</string>
+    <string-array name="activity_monitor_list_activity_preference_session_pause_length_entries">
+        <item>Always a new session</item>
+        <item>1 Min</item>
+        <item>2 Min</item>
+        <item>3 Min</item>
+        <item>4 Min</item>
+        <item>5 Min</item>
+    </string-array>
+    <string-array name="activity_monitor_list_activity_preference_session_pause_length_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string name="activity_monitor_list_activity_preference_alert_time_title">Alert Time</string>
+    <string name="activity_monitor_list_activity_preference_alert_time_summary">How long before you get told you\'ve been on too long?</string>
+    <string name="activity_monitor_list_activity_preference_alert_time_dialogTitle">Alert Time</string>
+    <string name="activity_monitor_list_activity_preference_alert_time_defaultValue">5</string>
+    <string-array name="activity_monitor_list_activity_preference_alert_time_entries">
+        <item>No Alerts</item>
+        <item>1 Min</item>
+        <item>2 Min</item>
+        <item>3 Min</item>
+        <item>4 Min</item>
+        <item>5 Min</item>
+        <item>6 Min</item>
+        <item>7 Min</item>
+        <item>8 Min</item>
+        <item>9 Min</item>
+        <item>10 Min</item>
+        <item>11 Min</item>
+        <item>12 Min</item>
+        <item>13 Min</item>
+        <item>14 Min</item>
+        <item>15 Min</item>
+        <item>16 Min</item>
+        <item>17 Min</item>
+        <item>18 Min</item>
+        <item>19 Min</item>
+        <item>20 Min</item>
+    </string-array>
+    <string-array name="activity_monitor_list_activity_preference_alert_time_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+
+    <string name="activity_monitor_list_activity_preference_session_pause_length_key">activity_monitor_list_activity_preference_session_pause_length_key</string>
+    <string name="activity_monitor_list_activity_preference_alert_time_key">activity_monitor_list_activity_preference_alert_time_key</string>
+
+</resources>

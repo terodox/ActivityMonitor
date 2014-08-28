@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fragment_session_summary_currentlyPolling_text">Currently Monitoring:</string>
+
+    <string name="fragment_session_summary_lengthName">Overall Time:</string>
+    <string name="fragment_session_summary_averageName">Average Session:</string>
+    <string name="fragment_session_summary_sessionCountName">Total Sessions:</string>
+
+    <string name="fragment_session_summary_overallHeader">In Total:</string>
+    <string name="fragment_session_summary_last24HrsHeader">Last 24 Hrs:</string>
+    <string name="fragment_session_summary_lastWeekHeader">Last Week:</string>
+    <string name="fragment_session_summary_last30DaysHeader">Last 30 Days:</string>
+</resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/fragment_session_summary_icon"
+            style="@style/AppIcon"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:id="@+id/fragment_session_summary_name"
+            style="@style/HeaderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/fragment_session_summary_icon"/>
+        <TextView
+            android:id="@+id/fragment_session_summary_className"
+            style="@style/SubText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_session_summary_name"
+            android:layout_toRightOf="@id/fragment_session_summary_icon"
+            />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <com.andyd.activitymonitor.SessionSummaryView
+                android:id="@+id/fragment_session_summary_last24Hrs"
+                custom:backgroundColor="@android:color/white"
+                custom:summaryHeader="@string/fragment_session_summary_last24HrsHeader"
+                custom:summaryAverageName="@string/fragment_session_summary_averageName"
+                custom:summaryLengthName="@string/fragment_session_summary_lengthName"
+                custom:sessionCountName="@string/fragment_session_summary_sessionCountName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <com.andyd.activitymonitor.SessionSummaryView
+                android:id="@+id/fragment_session_summary_lastWeek"
+                custom:backgroundColor="@android:color/darker_gray"
+                custom:summaryHeader="@string/fragment_session_summary_lastWeekHeader"
+                custom:summaryAverageName="@string/fragment_session_summary_averageName"
+                custom:summaryLengthName="@string/fragment_session_summary_lengthName"
+                custom:sessionCountName="@string/fragment_session_summary_sessionCountName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <com.andyd.activitymonitor.SessionSummaryView
+                android:id="@+id/fragment_session_summary_last30Days"
+                custom:backgroundColor="@android:color/white"
+                custom:summaryHeader="@string/fragment_session_summary_last30DaysHeader"
+                custom:summaryAverageName="@string/fragment_session_summary_averageName"
+                custom:summaryLengthName="@string/fragment_session_summary_lengthName"
+                custom:sessionCountName="@string/fragment_session_summary_sessionCountName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <com.andyd.activitymonitor.SessionSummaryView
+                android:id="@+id/fragment_session_summary_overall"
+                custom:backgroundColor="@android:color/darker_gray"
+                custom:summaryHeader="@string/fragment_session_summary_overallHeader"
+                custom:summaryAverageName="@string/fragment_session_summary_averageName"
+                custom:summaryLengthName="@string/fragment_session_summary_lengthName"
+                custom:sessionCountName="@string/fragment_session_summary_sessionCountName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/background_light">
+                <TableRow>
+                    <TextView
+                        android:text="@string/fragment_session_summary_currentlyPolling_text"
+                        />
+                    <ToggleButton
+                        android:id="@+id/fragment_session_summary_currentlyPolling"
+                        style="@style/AppIcon"
+                        android:layout_width="96dp"
+                        android:layout_marginLeft="8dp"
+                        />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

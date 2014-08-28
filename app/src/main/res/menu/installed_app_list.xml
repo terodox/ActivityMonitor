@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/instaled_app_list_menu_search"
+        android:title="@string/installed_app_list_menu_search_title"
+        android:showAsAction="ifRoom"
+        android:actionViewClass="android.widget.SearchView" />
+</menu>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/session_summary_view_timingHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Header2Text"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+
+            >
+            <TableRow>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/session_summary_view_summaryLengthName" />
+                <TextView
+                    android:id="@+id/session_summary_view_summaryLengthValue"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/session_summary_view_summaryAverageName" />
+                <TextView
+                    android:id="@+id/session_summary_view_summaryAverageValue"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    />
+            </TableRow>
+            <TableRow>
+                <TextView android:id="@+id/session_summary_view_sessionCountName"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+                <TextView
+                    android:id="@+id/session_summary_view_sessionCountValue"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</merge>

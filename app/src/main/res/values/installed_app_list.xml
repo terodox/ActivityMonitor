@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="installed_app_list_search_label">Find An App</string>
+    <string name="installed_app_list_search_hint">App Name</string>
+
+    <string name="installed_app_list_menu_search_title">Search</string>
+</resources>

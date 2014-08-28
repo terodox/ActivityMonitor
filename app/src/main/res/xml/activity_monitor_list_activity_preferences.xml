@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="activity_monitor_list_activity_preference"
+    android:title="@string/activity_monitor_list_activity_preferenceTitle"
+    android:summary="@string/activity_monitor_list_activity_preferenceSummary">
+    <PreferenceCategory
+        android:title="Activity Monitor Settings">
+        <ListPreference
+            android:key="@string/activity_monitor_list_activity_preference_session_pause_length_key"
+            android:title="@string/activity_monitor_list_activity_preference_session_pause_length_title"
+            android:summary="@string/activity_monitor_list_activity_preference_session_pause_length_summary"
+            android:entries="@array/activity_monitor_list_activity_preference_session_pause_length_entries"
+            android:entryValues="@array/activity_monitor_list_activity_preference_session_pause_length_values"
+            android:dialogTitle="@string/activity_monitor_list_activity_preference_session_pause_length_dialogTitle"
+            android:defaultValue="@string/activity_monitor_list_activity_preference_session_pause_length_defaultValue" />
+        <ListPreference
+            android:key="@string/activity_monitor_list_activity_preference_alert_time_key"
+            android:title="@string/activity_monitor_list_activity_preference_alert_time_title"
+            android:summary="@string/activity_monitor_list_activity_preference_alert_time_summary"
+            android:entries="@array/activity_monitor_list_activity_preference_alert_time_entries"
+            android:entryValues="@array/activity_monitor_list_activity_preference_alert_time_values"
+            android:dialogTitle="@string/activity_monitor_list_activity_preference_alert_time_dialogTitle"
+            android:defaultValue="@string/activity_monitor_list_activity_preference_alert_time_defaultValue" />
+    </PreferenceCategory>
+</PreferenceScreen>

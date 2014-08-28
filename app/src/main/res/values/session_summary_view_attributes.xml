@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SessionSummaryView">
+        <attr name="summaryHeader" format="string" localization="suggested" />
+        <attr name="summaryLengthName" format="string" localization="suggested" />
+        <attr name="summaryAverageName" format="string" localization="suggested" />
+        <attr name="sessionCountName" format="string" localization="suggested" />
+
+        <attr name="backgroundColor" format="color" />
+    </declare-styleable>
+</resources>
