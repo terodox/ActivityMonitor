@@ -38,8 +38,17 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
             <com.andyd.activitymonitor.SessionSummaryView
-                android:id="@+id/fragment_session_summary_last24Hrs"
+                android:id="@+id/fragment_session_summary_today"
                 custom:backgroundColor="@android:color/white"
+                custom:summaryHeader="@string/fragment_session_summary_today"
+                custom:summaryAverageName="@string/fragment_session_summary_averageName"
+                custom:summaryLengthName="@string/fragment_session_summary_lengthName"
+                custom:sessionCountName="@string/fragment_session_summary_sessionCountName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <com.andyd.activitymonitor.SessionSummaryView
+                android:id="@+id/fragment_session_summary_last24Hrs"
+                custom:backgroundColor="@android:color/darker_gray"
                 custom:summaryHeader="@string/fragment_session_summary_last24HrsHeader"
                 custom:summaryAverageName="@string/fragment_session_summary_averageName"
                 custom:summaryLengthName="@string/fragment_session_summary_lengthName"
@@ -48,7 +57,7 @@
                 android:layout_height="wrap_content" />
             <com.andyd.activitymonitor.SessionSummaryView
                 android:id="@+id/fragment_session_summary_lastWeek"
-                custom:backgroundColor="@android:color/darker_gray"
+                custom:backgroundColor="@android:color/white"
                 custom:summaryHeader="@string/fragment_session_summary_lastWeekHeader"
                 custom:summaryAverageName="@string/fragment_session_summary_averageName"
                 custom:summaryLengthName="@string/fragment_session_summary_lengthName"
@@ -57,7 +66,7 @@
                 android:layout_height="wrap_content" />
             <com.andyd.activitymonitor.SessionSummaryView
                 android:id="@+id/fragment_session_summary_last30Days"
-                custom:backgroundColor="@android:color/white"
+                custom:backgroundColor="@android:color/darker_gray"
                 custom:summaryHeader="@string/fragment_session_summary_last30DaysHeader"
                 custom:summaryAverageName="@string/fragment_session_summary_averageName"
                 custom:summaryLengthName="@string/fragment_session_summary_lengthName"
@@ -66,7 +75,7 @@
                 android:layout_height="wrap_content" />
             <com.andyd.activitymonitor.SessionSummaryView
                 android:id="@+id/fragment_session_summary_overall"
-                custom:backgroundColor="@android:color/darker_gray"
+                custom:backgroundColor="@android:color/white"
                 custom:summaryHeader="@string/fragment_session_summary_overallHeader"
                 custom:summaryAverageName="@string/fragment_session_summary_averageName"
                 custom:summaryLengthName="@string/fragment_session_summary_lengthName"

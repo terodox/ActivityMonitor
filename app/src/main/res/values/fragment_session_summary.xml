@@ -7,6 +7,7 @@
     <string name="fragment_session_summary_sessionCountName">Total Sessions:</string>
 
     <string name="fragment_session_summary_overallHeader">In Total:</string>
+    <string name="fragment_session_summary_today">Today:</string>
     <string name="fragment_session_summary_last24HrsHeader">Last 24 Hrs:</string>
     <string name="fragment_session_summary_lastWeekHeader">Last Week:</string>
     <string name="fragment_session_summary_last30DaysHeader">Last 30 Days:</string>

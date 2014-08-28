@@ -8,7 +8,7 @@
     <string name="activity_monitor_list_activity_preference_session_pause_length_title">Pause Time</string>
     <string name="activity_monitor_list_activity_preference_session_pause_length_summary">How long between uses is still a single session?</string>
     <string name="activity_monitor_list_activity_preference_session_pause_length_dialogTitle">Session Time</string>
-    <string name="activity_monitor_list_activity_preference_session_pause_length_defaultValue">2</string>
+    <string name="activity_monitor_list_activity_preference_session_pause_length_defaultValue">0</string>
     <string-array name="activity_monitor_list_activity_preference_session_pause_length_entries">
         <item>Always a new session</item>
         <item>1 Min</item>
@@ -29,7 +29,7 @@
     <string name="activity_monitor_list_activity_preference_alert_time_title">Alert Time</string>
     <string name="activity_monitor_list_activity_preference_alert_time_summary">How long before you get told you\'ve been on too long?</string>
     <string name="activity_monitor_list_activity_preference_alert_time_dialogTitle">Alert Time</string>
-    <string name="activity_monitor_list_activity_preference_alert_time_defaultValue">5</string>
+    <string name="activity_monitor_list_activity_preference_alert_time_defaultValue">0</string>
     <string-array name="activity_monitor_list_activity_preference_alert_time_entries">
         <item>No Alerts</item>
         <item>1 Min</item>

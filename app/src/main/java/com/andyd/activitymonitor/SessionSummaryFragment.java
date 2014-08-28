@@ -28,6 +28,7 @@ public class SessionSummaryFragment extends Fragment {
     //Objects that are required to make this fragment function;
     private ActivityModel mCurrentActivity;
     private SessionSummaryModel mOverallSessionSummary;
+    private SessionSummaryModel mTodaySummary;
     private SessionSummaryModel mLast24HrsSessionSummary;
     private SessionSummaryModel mLastWeekSessionSummary;
     private SessionSummaryModel mLast30DaysSessionSummary;
@@ -37,6 +38,7 @@ public class SessionSummaryFragment extends Fragment {
     TextView mActivityName;
     TextView mActivityClass;
     SessionSummaryView mSessionOverall;
+    SessionSummaryView mSessionToday;
     SessionSummaryView mSessionLast24Hrs;
     SessionSummaryView mSessionLastWeek;
     SessionSummaryView mSessionLast30Days;
@@ -84,19 +86,18 @@ public class SessionSummaryFragment extends Fragment {
             long activityId = args.getLong(EXTRA_SESSION_SUMMARY_FRAGMENT_ACTIVITY_ID, 0);
             mCurrentActivity = activityController.getActivityById(activityId);
             mOverallSessionSummary = activityController.getActivitySessionSummary(activityId);
-            long oneDay =          24 * 60 * 60 * 1000;
-            long sevenDays =   7 * oneDay;
-            long thirtyDays = 30 * oneDay;
-
+            mTodaySummary = activityController
+                    .getActivitySessionSummarySince(activityId,
+                            System.currentTimeMillis() - TimeUtils.MillisecondsSinceMidnight());
             mLast24HrsSessionSummary = activityController
                     .getActivitySessionSummarySince(activityId,
-                    System.currentTimeMillis() - oneDay);
+                    System.currentTimeMillis() - TimeUtils.oneDayMilliseconds);
             mLastWeekSessionSummary = activityController
                     .getActivitySessionSummarySince(activityId,
-                    System.currentTimeMillis() - sevenDays);
+                    System.currentTimeMillis() - TimeUtils.sevenDaysMilliseconds);
             mLast30DaysSessionSummary = activityController
                     .getActivitySessionSummarySince(activityId,
-                    System.currentTimeMillis() - thirtyDays);
+                    System.currentTimeMillis() - TimeUtils.thirtyDaysMilliseconds);
         }
     }
 
@@ -110,6 +111,8 @@ public class SessionSummaryFragment extends Fragment {
         mActivityClass = (TextView)view.findViewById(R.id.fragment_session_summary_className);
         mSessionOverall =
                 (SessionSummaryView)view.findViewById(R.id.fragment_session_summary_overall);
+        mSessionToday =
+                (SessionSummaryView)view.findViewById(R.id.fragment_session_summary_today);
         mSessionLast24Hrs =
                 (SessionSummaryView)view.findViewById(R.id.fragment_session_summary_last24Hrs);
         mSessionLastWeek =
@@ -137,6 +140,7 @@ public class SessionSummaryFragment extends Fragment {
 
             //Setup all the custom views
             mSessionOverall.setUpSummary(mOverallSessionSummary);
+            mSessionToday.setUpSummary(mTodaySummary);
             mSessionLast24Hrs.setUpSummary(mLast24HrsSessionSummary);
             mSessionLastWeek.setUpSummary(mLastWeekSessionSummary);
             mSessionLast30Days.setUpSummary(mLast30DaysSessionSummary);
