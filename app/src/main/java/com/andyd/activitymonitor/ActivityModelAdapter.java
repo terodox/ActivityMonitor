@@ -100,8 +100,6 @@ public class ActivityModelAdapter extends BaseAdapter {
             }
             viewParts.headerText.setText(currentActivity.getName());
             viewParts.subText.setText(currentActivity.getClassName());
-
-            //TODO: setup the onclick listener
         }
 
         return view;

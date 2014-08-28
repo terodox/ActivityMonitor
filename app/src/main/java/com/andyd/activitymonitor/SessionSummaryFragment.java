@@ -5,16 +5,22 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by AndrewA on 8/14/2014.
@@ -37,6 +43,7 @@ public class SessionSummaryFragment extends Fragment {
     ImageView mActivityIcon;
     TextView mActivityName;
     TextView mActivityClass;
+    Spinner mAlertTimeoutSpinner;
     SessionSummaryView mSessionOverall;
     SessionSummaryView mSessionToday;
     SessionSummaryView mSessionLast24Hrs;
@@ -109,6 +116,11 @@ public class SessionSummaryFragment extends Fragment {
         mActivityIcon = (ImageView)view.findViewById(R.id.fragment_session_summary_icon);
         mActivityName = (TextView)view.findViewById(R.id.fragment_session_summary_name);
         mActivityClass = (TextView)view.findViewById(R.id.fragment_session_summary_className);
+        mAlertTimeoutSpinner =
+                (Spinner)view.findViewById(R.id.fragment_session_summary_alertTimeout);
+
+
+
         mSessionOverall =
                 (SessionSummaryView)view.findViewById(R.id.fragment_session_summary_overall);
         mSessionToday =
@@ -137,6 +149,43 @@ public class SessionSummaryFragment extends Fragment {
             mActivityClass.setText(mCurrentActivity.getClassName());
             mCurrentlyPollingButton.setChecked(mCurrentActivity.getPolling() == 1);
             mCurrentlyPollingButton.setOnClickListener(TogglePolling);
+            int alertTimeout = mCurrentActivity.getAlertTimeout();
+
+            //Get the array of values from
+            // resource in /res/values/activity_monitor_list_menu.xml
+            String[] alertTimeValues = (getResources()).getStringArray(
+                    R.array.activity_monitor_list_activity_preference_alert_time_values);
+            boolean alertTimeoutValueFound = false;
+            //Look for our value in the array, when we find it select that entity from the spinner
+            for(int alertTimeLoop = 0; alertTimeLoop < alertTimeValues.length; alertTimeLoop++) {
+                if(mCurrentActivity.getAlertTimeout() == Integer.valueOf(alertTimeValues[alertTimeLoop])) {
+                    mAlertTimeoutSpinner.setSelection(alertTimeLoop);
+                    alertTimeoutValueFound = true;
+                }
+            }
+            //If we don't find the value in the array, then set it to be off.
+            if(!alertTimeoutValueFound) {
+                mAlertTimeoutSpinner.setSelection(0);
+            }
+
+            //Declaring this inline, because it's action is VERY straightforward
+            mAlertTimeoutSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    String[] alertTimeValues = (getResources()).getStringArray(
+                            R.array.activity_monitor_list_activity_preference_alert_time_values);
+
+                    //Get the value from the value array
+                    mCurrentActivity.setAlertTimeout(Integer.valueOf(alertTimeValues[position]));
+                    //Update the activity.
+                    ActivityController.get(getActivity()).update(mCurrentActivity);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    //Do Nothing
+                }
+            });
 
             //Setup all the custom views
             mSessionOverall.setUpSummary(mOverallSessionSummary);

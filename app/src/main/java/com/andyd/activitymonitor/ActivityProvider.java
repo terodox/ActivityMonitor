@@ -39,6 +39,8 @@ public class ActivityProvider extends ContentProvider {
                 ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_POLLING);
         sActivitiesProjection.put(ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CREATED,
                 ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CREATED);
+        sActivitiesProjection.put(ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_ALERT_TIMEOUT,
+                ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_ALERT_TIMEOUT);
 
         sSessionsProjection = new HashMap<String, String>();
         sSessionsProjection.put(ActivityProviderMetaData.SessionTableMetaData._ID,
@@ -92,64 +94,6 @@ public class ActivityProvider extends ContentProvider {
                 INCOMING_SESSION_LATEST_URI_INDICATOR);
         sUriMatcher.addURI(ActivityProviderMetaData.AUTHORITY, "activities/#/sessionSummary",
                 INCOMING_SESSION_SUMMARY_URI_INDICATOR);
-    }
-
-    /**
-     * Setup/Create Database
-     * This class helps to open, create and upgrade the database file
-     */
-    public static class ActivityDatabaseHelper extends SQLiteOpenHelper {
-        ActivityDatabaseHelper(Context context) {
-            super(context,
-                    ActivityProviderMetaData.DATABASE_NAME,
-                    null,
-                    ActivityProviderMetaData.DATABASE_VERSION);
-        }
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            Log.d(TAG, "inner onCreate called");
-            db.execSQL("CREATE TABLE " + ActivityProviderMetaData.ActivityTableMetaData.TABLE_NAME
-                    + " (" + ActivityProviderMetaData.ActivityTableMetaData._ID
-                    + " INTEGER PRIMARY KEY,"
-                    + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_NAME + " TEXT,"
-                    + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CLASS + " TEXT,"
-                    + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_ICON + " INTEGER,"
-                    + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_POLLING + " INTEGER,"
-                    + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CREATED + " INTEGER"
-                    + ");");
-            /**
-             * This unique index is a safety.
-             * This is enforced by a business rule in the ActivityController's insert method.
-             */
-            db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS "
-                    + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_UDX_CLASS + " ON "
-                    + ActivityProviderMetaData.ActivityTableMetaData.TABLE_NAME + " ("
-                    + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CLASS
-                    + ")");
-
-            db.execSQL("CREATE TABLE " + ActivityProviderMetaData.SessionTableMetaData.TABLE_NAME
-                    + " (" + ActivityProviderMetaData.SessionTableMetaData._ID
-                    + " INTEGER PRIMARY KEY,"
-                    + ActivityProviderMetaData.SessionTableMetaData.ACTIVITY_ID + " INTEGER,"
-                    + ActivityProviderMetaData.SessionTableMetaData.SESSION_START + " INTEGER,"
-                    + ActivityProviderMetaData.SessionTableMetaData.SESSION_END + " INTEGER,"
-                    + ActivityProviderMetaData.SessionTableMetaData.SESSION_CREATED + " INTEGER,"
-                    + ActivityProviderMetaData.SessionTableMetaData.SESSION_MODIFIED + " INTEGER"
-                    + ");");
-        }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            Log.d(TAG, "inner onUpgrade called");
-            Log.w(TAG, "Upgrading database from " + oldVersion + " to " + newVersion
-                    + " which will destroy all old data");
-            db.execSQL("DROP TABLE IF EXISTS " +
-                    ActivityProviderMetaData.ActivityTableMetaData.TABLE_NAME);
-            db.execSQL("DROP TABLE IF EXISTS " +
-                    ActivityProviderMetaData.SessionTableMetaData.TABLE_NAME);
-            onCreate(db);
-        }
     }
 
     private ActivityDatabaseHelper mOpenHelper;

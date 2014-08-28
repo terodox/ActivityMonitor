@@ -29,6 +29,21 @@
             android:layout_toRightOf="@id/fragment_session_summary_icon"
             />
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:text="@string/fragment_session_summary_alertTimeout_text"
+            style="@style/Header2Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/fragment_session_summary_alertTimeout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/activity_monitor_list_activity_preference_alert_time_entries"/>
+    </LinearLayout>
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

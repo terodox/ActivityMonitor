@@ -28,7 +28,8 @@ public class ActivityController {
             ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CLASS,
             ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_ICON,
             ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_POLLING,
-            ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CREATED
+            ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CREATED,
+            ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_ALERT_TIMEOUT
     };
 
     private static String[] mSessionProjection = new String[] {
@@ -401,6 +402,8 @@ public class ActivityController {
             values.put(ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CREATED,
                     currentActivity.getCreated());
         }
+        values.put(ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_ALERT_TIMEOUT,
+                currentActivity.getAlertTimeout());
         return values;
     }
 
@@ -411,6 +414,7 @@ public class ActivityController {
         public int iIconColumn;
         public int iPollingColumn;
         public int iCreatedColumn;
+        public int iAlertTimeoutColumn;
 
         public ActivityModelCursorHelper(Cursor cursor) {
             iIdColumn = cursor.getColumnIndex(
@@ -425,6 +429,8 @@ public class ActivityController {
                     ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_POLLING);
             iCreatedColumn = cursor.getColumnIndex(
                     ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CREATED);
+            iAlertTimeoutColumn = cursor.getColumnIndex(
+                    ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_ALERT_TIMEOUT);
         }
 
         public ActivityModel createModelFromCursor(Cursor cursor) {
@@ -434,7 +440,8 @@ public class ActivityController {
                     cursor.getString(iClassNameColumn),
                     cursor.getInt(iIconColumn),
                     cursor.getInt(iPollingColumn),
-                    cursor.getLong(iCreatedColumn)
+                    cursor.getLong(iCreatedColumn),
+                    cursor.getInt(iAlertTimeoutColumn)
             );
         }
     }

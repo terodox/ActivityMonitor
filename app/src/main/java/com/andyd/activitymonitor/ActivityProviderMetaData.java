@@ -11,7 +11,7 @@ public class ActivityProviderMetaData {
             "com.andyd.ActivityMonitor.provider.ActivityProvider";
 
     public static final String DATABASE_NAME = "activity.db";
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
 
     private ActivityProviderMetaData() {}
 
@@ -42,6 +42,8 @@ public class ActivityProviderMetaData {
         public static final String ACTIVITY_POLLING = "polling";
         //TYPE: int from System.currentTimeMillis()
         public static final String ACTIVITY_CREATED = "created";
+        //TYPE: int 0 means don't alert, > 0 alert timeout in minutes
+        public static final String ACTIVITY_ALERT_TIMEOUT = "alertTimeout";
 
         //Indexes!
         public static final String ACTIVITY_UDX_CLASS = "uidx_" + ACTIVITY_CLASS;

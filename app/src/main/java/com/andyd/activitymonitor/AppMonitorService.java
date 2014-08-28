@@ -46,7 +46,7 @@ public class AppMonitorService extends IntentService {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         int pollingCount = PreferenceHelper.getPollingCount(this);
         mSession = PreferenceHelper.getCurrentSession(this);
-        int alertTime = PreferenceHelper.getAlertTime(this);
+        int alertTime = PreferenceHelper.getAlertTimeout(this);
 
         //If we move away from the app, this will be set.
         long currentTime = System.currentTimeMillis();
@@ -91,6 +91,9 @@ public class AppMonitorService extends IntentService {
                             Log.d(TAG, "FOUND " + currentTopClass + " RUNNING!!!");
                             ActivityModel currentActivity =
                                     activityController.getActivityByClass(currentTopClass);
+                            //Update the alert timeout.
+                            PreferenceHelper
+                                    .setAlertTimeout(this, currentActivity.getAlertTimeout());
                             if (currentActivity.getId() != mSession.getActivityId()) {
                                 //If it's the same as the current session, then we don't do anything.
                                 if (mSession.getId() != 0) {
@@ -102,8 +105,8 @@ public class AppMonitorService extends IntentService {
                                     // be passed along and therefore will not be updated.
                                     activityController.update(mSession);
                                 }
-                                mSession = new SessionModel();
-                                mSession.setActivityId(currentActivity.getId());
+                                mSession = new SessionModel(
+                                        0, currentActivity.getId(), System.currentTimeMillis());
                                 //This insert may yield a previous session if it was running within the last
                                 // 5 minutes.
                                 mSession = activityController.insert(mSession);

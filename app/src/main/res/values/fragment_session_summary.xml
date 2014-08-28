@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="fragment_session_summary_alertTimeout_text">Alert Time:</string>
+    <string name="fragment_session_summary_alertTimeout_minute_text"> minute(s)</string>
+
     <string name="fragment_session_summary_currentlyPolling_text">Currently Monitoring:</string>
 
     <string name="fragment_session_summary_lengthName">Overall Time:</string>

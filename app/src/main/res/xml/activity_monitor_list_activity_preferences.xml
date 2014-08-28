@@ -14,13 +14,5 @@
             android:entryValues="@array/activity_monitor_list_activity_preference_session_pause_length_values"
             android:dialogTitle="@string/activity_monitor_list_activity_preference_session_pause_length_dialogTitle"
             android:defaultValue="@string/activity_monitor_list_activity_preference_session_pause_length_defaultValue" />
-        <ListPreference
-            android:key="@string/activity_monitor_list_activity_preference_alert_time_key"
-            android:title="@string/activity_monitor_list_activity_preference_alert_time_title"
-            android:summary="@string/activity_monitor_list_activity_preference_alert_time_summary"
-            android:entries="@array/activity_monitor_list_activity_preference_alert_time_entries"
-            android:entryValues="@array/activity_monitor_list_activity_preference_alert_time_values"
-            android:dialogTitle="@string/activity_monitor_list_activity_preference_alert_time_dialogTitle"
-            android:defaultValue="@string/activity_monitor_list_activity_preference_alert_time_defaultValue" />
     </PreferenceCategory>
 </PreferenceScreen>

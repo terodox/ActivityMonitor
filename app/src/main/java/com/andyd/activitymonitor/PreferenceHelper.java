@@ -20,6 +20,7 @@ public class PreferenceHelper {
         public static final String PREF_CURRENT_SESSION_START = "currentSessionStart";
         public static final String PREF_CURRENT_ACTIVITY_ID = "currentActivityId";
         public static final String PREF_CURRENT_POLLING_COUNT = "currentPollingCount";
+        public static final String PREF_CURRENT_ALERT_TIMEOUT = "currentAlertTimeout";
     }
 
     public static int getPollingCount(Context context) {
@@ -90,24 +91,19 @@ public class PreferenceHelper {
         return sessionPauseMaxInt;
     }
 
-    public static int getAlertTime(Context context) {
+    public static int getAlertTimeout(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        //Using the preferences setup in activity_monitor_list_activity_preferences.xml
-        // we will try to retrieve them from the shared prefs, but to be safe our default
-        // will be the default from our resources.
-
-        //Get the default
-        int alertTimeInt = Integer.parseInt(context.getResources().getString(
-                R.string.activity_monitor_list_activity_preference_alert_time_defaultValue));
+        //Set the default
+        int alertTimeInt = 0;
         //Try to get the pref, but default appropriately.
-        String alertTimeString = prefs.getString(context.getResources().getString(
-                        R.string.activity_monitor_list_activity_preference_alert_time_key),
-                Integer.toString(alertTimeInt));
-
-        //If we got a numeric value, then use it.
-        if(NumberUtils.IsNumeric(alertTimeString)) {
-            alertTimeInt = Integer.parseInt(alertTimeString);
-        }
+        alertTimeInt = prefs.getInt(Preferences.PREF_CURRENT_ALERT_TIMEOUT, alertTimeInt);
         return alertTimeInt;
+    }
+
+    public static void setAlertTimeout(Context context, int alertTimeout) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit()
+                .putInt(Preferences.PREF_CURRENT_ALERT_TIMEOUT, alertTimeout)
+                .commit();
     }
 }
