@@ -36,7 +36,8 @@ public class ActivityDatabaseHelper extends SQLiteOpenHelper {
                 + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CLASS + " TEXT,"
                 + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_ICON + " INTEGER,"
                 + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_POLLING + " INTEGER,"
-                + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CREATED + " INTEGER"
+                + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_CREATED + " INTEGER,"
+                + ActivityProviderMetaData.ActivityTableMetaData.ACTIVITY_ALERT_TIMEOUT + " INTEGER"
                 + ");");
         /**
          * This unique index is a safety.
